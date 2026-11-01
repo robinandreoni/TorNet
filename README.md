@@ -199,10 +199,10 @@ Detailed documentation is available in the `docs/` directory:
 * 📖 [Installation Guide](docs/INSTALL.md)
 * 📖 [Usage & Workflows](docs/USAGE.md)
 * 📖 [REST API Reference](docs/API.md)
-* 📖 [Master Architecture Plan](TORNET_MASTER_PLAN.md)
 
 ---
 
 ## 📄 License
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
