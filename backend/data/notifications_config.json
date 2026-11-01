@@ -1,0 +1,13 @@
+{
+  "telegram_enabled": false,
+  "telegram_bot_token": "",
+  "telegram_chat_id": "",
+  "email_enabled": false,
+  "email_smtp_host": "smtp.gmail.com",
+  "email_smtp_port": 587,
+  "email_smtp_user": "",
+  "email_smtp_pass": "",
+  "email_recipient": "",
+  "webhook_enabled": false,
+  "webhook_url": "https://example.com/webhook"
+}

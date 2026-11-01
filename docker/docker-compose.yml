@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    container_name: tornet-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../backend/data:/app/data
+      - ../backend/plugins:/app/plugins
+      - ../backend/wordlists:/app/wordlists
+    environment:
+      - TORNET_ENV=production
+      - CORS_ORIGINS=http://localhost:5173,http://localhost:80,http://127.0.0.1
+    networks:
+      - tornet-net
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.frontend
+    container_name: tornet-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - tornet-net
+
+  # Authorized Local Vulnerable Testing Targets (Isolated network)
+  dvwa-target:
+    image: vulnerables/web-dvwa
+    container_name: tornet-lab-dvwa
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    networks:
+      - tornet-net
+
+  juice-shop-target:
+    image: bkimminich/juice-shop
+    container_name: tornet-lab-juiceshop
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    networks:
+      - tornet-net
+
+networks:
+  tornet-net:
+    driver: bridge
+

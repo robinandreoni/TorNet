@@ -1,0 +1,23 @@
+{
+  "id": "ffuf_fuzzer",
+  "name": "ffuf",
+  "display_name": "FFUF Web Fuzzer",
+  "category": "Directory & Content Discovery",
+  "description": "Fast web fuzzer written in Go for directory, parameter and virtual host discovery",
+  "version": "2.1.0",
+  "command_template": "ffuf -u {target}/FUZZ -w ./backend/wordlists/directories.txt -mc 200,301,302 {intensity_flags}",
+  "intensity_flags": {
+    "light": "-rate 50",
+    "medium": "-rate 150",
+    "aggressive": "-rate 500"
+  },
+  "vulnerability_keywords": [
+    "Status: 200",
+    "Status: 301",
+    "admin",
+    "login",
+    "config"
+  ],
+  "enabled": true,
+  "filename": "ffuf_plugin.json"
+}
